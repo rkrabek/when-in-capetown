@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    img {
+        max-height: 95%;
+        max-width: 95%;
+    }
+    header {
+        text-align: center;
+        background: url("http://www.travelstart.co.za/blog/wp-content/uploads/2013/11/Greg-Lumley.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+    }
+    .top {
+        padding: 40px 0px 40px 0px;
+    }
+    .large_top {
+      font-size: 90px;
+      font-weight: 800;
+      -webkit-text-stroke: 2px #555555;
+    }
+    .small_top {
+        font-size: 60px;
+        color: #555555;
+        font-weight: 400;
+        -webkit-text-stroke: 2px white;
+    }
+    footer {
+        margin: 40px;
+    }
+    h3 {
+        color: white;
+        font-size: 40px;
+        font-weight: 800;
+        -webkit-text-stroke: 2px #555555;
+        text-align: center;
+    }
+    .hero-unit {
+        margin: 40px;
+        background-color: #eeeeee;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+    }
+    small {
+        font-size: 30px;
+        font-weight: 100px;
+    }
+    img {
+        width: 250px;
+        height: 150px;
+        margin: 10px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+    }
+</style>
+</head>
+
+<body>
+    
+    <header>
+        <div class = top>
+            <span class="large_top"> When In Cape Town </span><span class="small_top"> Do it right. </span>
+        </div>
+        <div class="bar">
+            <nav role="navigation" class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- Collection of nav links, forms, and other content for toggling -->
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <% @days.each do |day_of_week| 
+                            if day_of_week == @day_name %>
+                                <li class="active"><a href= <%= day_of_week %> ><%= day_of_week.capitalize %></a></li>
+                            <% else %>
+                                <li><a href= <%= day_of_week %> ><%= day_of_week.capitalize %></a></li>
+                            <% end %>
+                        <% end %>
+                        <li><a href="/contact_us">Contact Us</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <h3> <%=@day_name.capitalize %> </h3>
+
+    <% @to_do.each do |activity| %>
+    	<div class="hero-unit">
+    	    <img src=<%= activity[1] %>>
+    	    <small><%= activity[0] %></small>
+    	</div>
+    <% end %>
+
+
+    <footer>
+        <h6> Copyright &copy; 2015 WishWeHadAJob Inc. All rights reserved. </h6>
+    </footer>
+</body>
